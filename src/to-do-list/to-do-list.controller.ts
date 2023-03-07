@@ -6,10 +6,13 @@ import {
   Patch,
   Param,
   Delete,
+  HttpException,
+  HttpStatus,
 } from '@nestjs/common';
 import { ToDoListService } from './to-do-list.service';
 import { CreateToDoListDto } from './dto/create-to-do-list.dto';
 import { UpdateToDoListDto } from './dto/update-to-do-list.dto';
+import { ToDoListDocument } from 'src/Schemas/toDoList.schema';
 
 @Controller('to-do-list')
 export class ToDoListController {
@@ -21,13 +24,8 @@ export class ToDoListController {
   }
 
   @Get()
-  findAll() {
-    return this.toDoListService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.toDoListService.findOne(+id);
+  async findAll(): Promise<ToDoListDocument[]> {
+    return await this.toDoListService.findAll();
   }
 
   @Patch(':id')
@@ -41,5 +39,10 @@ export class ToDoListController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.toDoListService.remove(id);
+  }
+
+  @Post('delete-by-array-id')
+  deleteByArrayId(@Body() input: { ids: [string] }) {
+    return this.toDoListService.deleteByArrayId(input);
   }
 }

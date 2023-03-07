@@ -16,19 +16,22 @@ export class ToDoListService {
     return await menu.save();
   }
 
-  findAll() {
-    return `This action returns all toDoList`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} toDoList`;
+  async findAll(): Promise<ToDoListDocument[]> {
+    return (await this.toDoListModel.find().sort({ dueDate: -1 })) ?? [];
   }
 
   async update(id: string, updateToDoListDto: UpdateToDoListDto) {
+    if (!id) {
+      throw new Error('required id');
+    }
     return await this.toDoListModel.findByIdAndUpdate(id, updateToDoListDto);
   }
 
   async remove(id: string) {
     return await this.toDoListModel.findByIdAndDelete(id);
+  }
+
+  async deleteByArrayId(input: { ids: [string] }) {
+    return await this.toDoListModel.deleteMany({ _id: { $in: input.ids } });
   }
 }

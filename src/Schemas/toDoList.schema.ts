@@ -7,7 +7,9 @@ export type ToDoListDocument = ToDoList & Document;
   timestamps: { createdAt: 'created', updatedAt: 'updated' },
 })
 export class ToDoList {
-  @Prop()
+  @Prop({
+    default: 'input title here',
+  })
   title: string;
 
   @Prop({
@@ -15,10 +17,14 @@ export class ToDoList {
   })
   dueDate: Date;
 
-  @Prop()
+  @Prop({
+    default: 'input description here',
+  })
   description: string;
 
-  @Prop()
+  @Prop({
+    default: 2,
+  })
   priority: number;
 }
 

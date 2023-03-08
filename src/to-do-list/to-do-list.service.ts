@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { ToDoList, ToDoListDocument } from 'src/Schemas/toDoList.schema';
+import { ToDoList, ToDoListDocument } from 'src/schema/to-do-list.schema';
 import { CreateToDoListDto } from './dto/create-to-do-list.dto';
 import { UpdateToDoListDto } from './dto/update-to-do-list.dto';
 

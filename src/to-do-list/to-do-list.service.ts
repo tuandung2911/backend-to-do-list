@@ -12,6 +12,8 @@ export class ToDoListService {
     private readonly toDoListModel: Model<ToDoListDocument>,
   ) {}
   async create(input: CreateToDoListDto): Promise<ToDoListDocument> {
+    console.log('vao service', JSON.stringify(input));
+
     const menu = new this.toDoListModel(input);
     return await menu.save();
   }

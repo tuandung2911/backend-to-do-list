@@ -20,6 +20,7 @@ export class ToDoListController {
 
   @Post()
   async create(@Body() createToDoListDto: CreateToDoListDto) {
+    console.log('vao controller', JSON.stringify(createToDoListDto));
     return await this.toDoListService.create(createToDoListDto);
   }
 

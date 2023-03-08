@@ -26,6 +26,10 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## DATABASE
+
+`mongoDB`
+
 ## config
 
 create file `.env` same `.env.example` and config database

@@ -12,7 +12,7 @@ import {
 import { ToDoListService } from './to-do-list.service';
 import { CreateToDoListDto } from './dto/create-to-do-list.dto';
 import { UpdateToDoListDto } from './dto/update-to-do-list.dto';
-import { ToDoListDocument } from 'src/schema/to-do-list-schema';
+import { ToDoListDocument } from './schemas/to-do-list.schema';
 
 @Controller('to-do-list')
 export class ToDoListController {
